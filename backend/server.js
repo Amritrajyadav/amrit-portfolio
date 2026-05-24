@@ -536,6 +536,12 @@ app.delete("/api/admin/resume", auth, async (req, res) => {
     });
   }
 });
+app.get("/debug", (req, res) => {
+  res.json({
+    success: true,
+    message: "Debug route working"
+  });
+});
 
 app.listen(PORT, () => {
   console.log(`Portfolio API running with MySQL on port ${PORT}`);
