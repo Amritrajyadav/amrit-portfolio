@@ -1,4 +1,4 @@
-const API_BASE = window.API_BASE_URL || "https://amrit-portfolio-91v1.onrender.com";
+const API_BASE = "https://amrit-portfolio-xhbh.onrender.com";
 let portfolioData = null;
 
 function token() {
@@ -104,8 +104,8 @@ function fillForms() {
   const resumeStatus = document.getElementById("resumeStatus");
 
   resumeStatus.innerHTML = portfolioData.resumeUrl
-    ? `<a href="${API_BASE}${portfolioData.resumeUrl}" target="_blank">Current Resume</a>`
-    : "No resume uploaded";
+  ? `<a href="${portfolioData.resumeUrl}" target="_blank">Current Resume</a>`
+  : "No resume uploaded";
 }
 
 function renderData() {
@@ -436,7 +436,7 @@ async function uploadImage(fileInputId, targetInputId) {
 }
 
 function updatePreview(inputId) {
-  const API_BASE = window.API_BASE_URL || "https://amrit-portfolio-91v1.onrender.com";
+  const API_BASE = "https://amrit-portfolio-xhbh.onrender.com";
   const input = document.getElementById(inputId);
 
   let previewId = "";

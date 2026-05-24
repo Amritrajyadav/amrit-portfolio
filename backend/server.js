@@ -465,7 +465,8 @@ app.post("/api/admin/upload-image", auth, upload.single("image"), async (req, re
       });
     }
 
-    const imageUrl = `/uploads/${req.file.filename}`;
+    const baseUrl = `${req.protocol}://${req.get("host")}`;
+    const imageUrl = `${baseUrl}/uploads/${req.file.filename}`;
 
     res.json({
       success: true,
@@ -489,7 +490,8 @@ app.post("/api/admin/upload-resume", auth, upload.single("resume"), async (req, 
       });
     }
 
-    const resumeUrl = `/uploads/${req.file.filename}`;
+    const baseUrl = `${req.protocol}://${req.get("host")}`;
+    const resumeUrl = `${baseUrl}/uploads/${req.file.filename}`;
 
     await db.query(
       `INSERT INTO resume (id, resumeUrl)
