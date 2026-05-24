@@ -1,0 +1,9 @@
+{
+  "name": "Amrit Raj Portfolio",
+  "short_name": "Amrit Portfolio",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#080c18",
+  "theme_color": "#2563eb",
+  "icons": []
+}

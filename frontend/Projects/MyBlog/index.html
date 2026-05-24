@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css" />
+    <!-- Local CSS Link -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- font awesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"  />
+    <!-- google font Quiksand -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600&display=swap" rel="stylesheet">
+    <title>Aditya's Blog - Home</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <!-- ========== Start of Header ========== -->
+        <header class="header text-center bg-primary text-white">
+            <h1 class="pt-lg-5">
+                <a class="text-white text-decoration-none" href="index.html">Aditya's Blog</a>
+            </h1>
+            <nav class="navbar navbar-expand-lg bg-transparent">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button> 
+                <div class="collapse navbar-collapse flex-column" id="navbarSupportedContent">
+                    <div class="pt-lg-0">
+                        <img class="mx-auto mb-3" src="images/profile.png" alt="">
+                        <div class="text-center">Hi, my name is Aditya Bansal. Briefly introduce yourself here. You can also provide a link to the about page.</div>
+                        <div class="text-center mt-3">
+                            <a class="text-white text-decoration-none fw-bold" href="about.html">Find out more about me</a>
+                            <hr>
+                        </div>
+                    </div>
+                    <ul class="social-icon list-inline mx-auto my-3">
+                        <li class="list-inline-item">
+                            <a href="" title="X-Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="" title="X-Twitter"><i class="fa-brands fa-linkedin"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="" title="X-Twitter"><i class="fa-brands fa-github"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="" title="X-Twitter"><i class="fa-brands fa-codepen"></i></a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav flex-column text-center">
+                      <li class="nav-item">
+                        <a class="nav-link active text-white" aria-current="page" href="index.html"><i class="fa-solid fa-home"></i> Home</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link text-white" href="about.html"><i class="fa-solid fa-user"></i> About Me</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link text-white" href="blog-post.html"><i class="fa-solid fa-blog"></i> Blog Post</a>
+                      </li>
+                    </ul>
+                    <div class="my-2">
+                        <a class="btn btn-danger" href="contact.html">Get in Touch</a>
+                    </div>
+                </div>
+              </nav>
+        </header>
+        <!-- ========== End of Header ========== -->
+        <!-- ========== Start of Main Area ========== -->
+        <div class="main-area">
+            <div class="main-container">
+                <section class="py-5 bg-light">
+                    <h2 class="text-center fw-bold fs-1">Hi All !</h2>
+                    <p class="text-center text-capitalize small">Welcome To My Blog. Subscribe And Get Latest Blog Post In Your Inbox</p>
+                    <div class="justify-content-center w-25 mx-auto my-3">
+                        <form >
+                            <div class="row g-3 align-items-center">
+                                <div class="col-auto">
+                                    <input type="email" id="email" class="form-control" title="Email" placeholder="Your Email">
+                                </div>
+                                <div class="col-auto">
+                                    <input type="submit" class="btn btn-primary">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+                <!-- ========== Section End ========== -->
+                <section class="py-5 px-5">
+                    <div class="blog-list">
+                        <div class="d-flex flex-row justify-content-center">
+                            <div class="me-5">
+                                <img class="img-thumbnail img-fluid d-none d-md-grid " src="images/blog/blog-post-thumb-1.jpg" alt="">
+                            </div>
+                            <div class="mx-auto">
+                                <h3 class="mb-1"><a href="blog-post.html">Why Every Developer Should Have A Blog</a></h3>
+                                <div class="meta">
+                                    <span>Published 2 days ago</span>
+                                    <span>5 min read</span>
+                                    <span>8 comments</span>
+                                </div>
+                                <p class="lead">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies...</p>
+                                <a class="small text-decoration-none" href="blog-post.html">Read more.. <i class="fa-solid fa-arrow-right"></i> </a>
+                            </div>
+                        </div>
+                    </div>
+                </section><!-- ========== Section End ========== -->
+                <section class="py-5 px-5">
+                    <div class="blog-list">
+                        <div class="d-flex flex-row justify-content-center">
+                            <div class="me-5">
+                                <img class="img-thumbnail img-fluid d-none d-md-grid " src="images/blog/blog-post-thumb-2.jpg" alt="">
+                            </div>
+                            <div class="mx-auto">
+                                <h3 class="mb-1"><a href="blog-post.html">A Guide to Becoming a Full-Stack Developer</a></h3>
+                                <div class="meta">
+                                    <span>Published 2 days ago</span>
+                                    <span>5 min read</span>
+                                    <span>8 comments</span>
+                                </div>
+                                <p class="lead">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies...</p>
+                                <a class="small text-decoration-none" href="blog-post.html">Read more.. <i class="fa-solid fa-arrow-right"></i> </a>
+                            </div>
+                        </div>
+                    </div>
+                </section><!-- ========== Section End ========== -->
+                <section class="py-5 px-5">
+                    <div class="blog-list">
+                        <div class="d-flex flex-row justify-content-center">
+                            <div class="me-5">
+                                <img class="img-thumbnail img-fluid d-none d-md-grid " src="images/blog/blog-post-thumb-3.jpg" alt="">
+                            </div>
+                            <div class="mx-auto">
+                                <h3 class="mb-1"><a href="blog-post.html">High Performance JavaScript</a></h3>
+                                <div class="meta">
+                                    <span>Published 2 days ago</span>
+                                    <span>5 min read</span>
+                                    <span>8 comments</span>
+                                </div>
+                                <p class="lead">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies...</p>
+                                <a class="small text-decoration-none" href="blog-post.html">Read more.. <i class="fa-solid fa-arrow-right"></i> </a>
+                            </div>
+                        </div>
+                    </div>
+                </section><!-- ========== Section End ========== -->
+                <section class="py-5 px-5">
+                    <div class="blog-list">
+                        <div class="d-flex flex-row justify-content-center">
+                            <div class="me-5">
+                                <img class="img-thumbnail img-fluid d-none d-md-grid " src="images/blog/blog-post-thumb-4.jpg" alt="">
+                            </div>
+                            <div class="mx-auto">
+                                <h3 class="mb-1"><a href="blog-post.html">Top 5 JavaScript Frameworks</a></h3>
+                                <div class="meta">
+                                    <span>Published 2 days ago</span>
+                                    <span>5 min read</span>
+                                    <span>8 comments</span>
+                                </div>
+                                <p class="lead">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies...</p>
+                                <a class="small text-decoration-none" href="blog-post.html">Read more.. <i class="fa-solid fa-arrow-right"></i> </a>
+                            </div>
+                        </div>
+                    </div>
+                </section><!-- ========== Section End ========== -->
+                <section class="py-5 px-5">
+                    <div class="blog-list">
+                        <div class="d-flex flex-row justify-content-center">
+                            <div class="me-5">
+                                <img class="img-thumbnail img-fluid d-none d-md-grid " src="images/blog/blog-post-thumb-5.jpg" alt="">
+                            </div>
+                            <div class="mx-auto">
+                                <h3 class="mb-1"><a href="blog-post.html">Learn React in 24 Hours</a></h3>
+                                <div class="meta">
+                                    <span>Published 2 days ago</span>
+                                    <span>5 min read</span>
+                                    <span>8 comments</span>
+                                </div>
+                                <p class="lead">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies...</p>
+                                <a class="small text-decoration-none" href="blog-post.html">Read more.. <i class="fa-solid fa-arrow-right"></i> </a>
+                            </div>
+                        </div>
+                    </div>
+                </section><!-- ========== Section End ========== -->
+                <section class="py-5 px-5">
+                    <div class="blog-list">
+                        <div class="d-flex flex-row justify-content-center">
+                            <div class="me-5">
+                                <img class="img-thumbnail img-fluid d-none d-md-grid " src="images/blog/blog-post-thumb-6.jpg" alt="">
+                            </div>
+                            <div class="mx-auto">
+                                <h3 class="mb-1"><a href="blog-post.html">Salary package for a developer</a></h3>
+                                <div class="meta">
+                                    <span>Published 2 days ago</span>
+                                    <span>5 min read</span>
+                                    <span>8 comments</span>
+                                </div>
+                                <p class="lead">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies...</p>
+                                <a class="small text-decoration-none" href="blog-post.html">Read more.. <i class="fa-solid fa-arrow-right"></i> </a>
+                            </div>
+                        </div>
+                    </div>
+                </section><!-- ========== Section End ========== -->
+                <section class="py-5 px-5">
+                    <div class="blog-list">
+                        <div class="d-flex flex-row justify-content-center">
+                            <div class="me-5">
+                                <img class="img-thumbnail img-fluid d-none d-md-grid " src="images/blog/blog-post-thumb-7.jpg" alt="">
+                            </div>
+                            <div class="mx-auto">
+                                <h3 class="mb-1"><a href="blog-post.html">Why you should learn CSS</a></h3>
+                                <div class="meta">
+                                    <span>Published 2 days ago</span>
+                                    <span>5 min read</span>
+                                    <span>8 comments</span>
+                                </div>
+                                <p class="lead">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies...</p>
+                                <a class="small text-decoration-none" href="blog-post.html">Read more.. <i class="fa-solid fa-arrow-right"></i> </a>
+                            </div>
+                        </div>
+                    </div>
+                </section><!-- ========== Section End ========== -->
+                <section class="py-5 px-5">
+                    <nav class="nav nav-justified">
+                        <a class="nav-link nav-item bg-primary text-white fw-bold rounded-start nav-prev " href="#"><i class="fa-solid fa-arrow-left mx-5"></i> Previous </a>
+                        <a class="nav-link nav-item bg-primary text-white fw-bold rounded-end" href="#"> Next <i class="fa-solid fa-arrow-right mx-5"></i></a>
+                    </nav>
+                </section>
+            </div>
+        </div>
+        <footer class="bg-dark text-center py-3 w-100">
+            <p class="small text-white">&copy; 2023 Copyright Aditya Bansal</p>
+        </footer>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.min.js" "></script>
+</body>
+</html>

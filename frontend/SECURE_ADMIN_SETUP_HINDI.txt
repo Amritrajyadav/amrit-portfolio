@@ -1,0 +1,37 @@
+SECURE ADMIN PANEL SETUP
+
+IMPORTANT:
+Purane admin panel me password browser JS me tha, isliye secure nahi tha.
+Is updated version me admin login backend se verify hota hai.
+
+LOCAL RUN STEPS:
+1) backend folder open karo
+2) npm install
+3) .env.example ka copy bana ke .env naam rakho
+4) .env me set karo:
+   ADMIN_EMAIL=apna email
+   ADMIN_PASSWORD=strong password
+   JWT_SECRET=random long secret
+   FRONTEND_URL=http://127.0.0.1:5500
+5) npm start
+6) portfolio root ko Live Server se open karo
+7) admin.html open karo aur login karo
+
+DEPLOY STEPS:
+1) Backend ko Render/Railway par deploy karo.
+2) Backend env variables set karo.
+3) js/config.js me API_BASE_URL ko backend live URL se replace karo.
+4) Frontend ko Netlify par deploy karo.
+
+ADMIN CRUD AVAILABLE:
+- Profile update
+- About update
+- Projects add/edit/delete
+- Skills add/edit/delete
+- Certificates add/edit/delete
+- Resume PDF upload
+- Resume note update
+
+SECURITY NOTE:
+Netlify/static frontend alone se secure admin CRUD possible nahi hai.
+Admin-only protection ke liye backend + env password/JWT required hai.

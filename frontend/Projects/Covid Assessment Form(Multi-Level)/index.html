@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="BS/css/bootstrap.min.css">
+    <title>COVID-19 Self Assessment Form-HANSA</title>
+</head>
+
+<body>
+    <div class="container d-flex align-items-center min-vh-100">
+        <div class="row g-0 justify-content-center">
+            <!-- Title -->
+            <div class="col-lg-4 offset-lg-1 mx-0 px-0">
+                <div id="title-container">
+                    <img src="img/covid-state-5.png" class="covid-image">
+                    <h2>COVID-19</h2>
+                    <h3 class="text-dark mb-3 mt-3" style="letter-spacing: 3px;">Self Assessment Form</h3>
+                    <p>A clinical assessment multi-step form that will help individuals on deciding when to seek testing or medical care if they suspect or someone they know has contracted COVID-19 or has come into close contact with someone who has COVID-19</p>
+                </div>
+            </div>
+            <!-- FORM -->
+            <div class="col-lg-7 mx-0 px-0">
+                <div class="progress">
+                    <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" style="width: 0%;"></div>
+                </div>
+                <div id="form-container">
+                    <form class="needs-validation" id="form-covid" method="post" name="form-covid" novalidate>
+                        <!-- Steps starts Here -->
+                        <div id="step-container">
+                            <div class="step">
+                                <h4>Have you recently been in close contact with someone who has COVID-19?</h4>
+                                <div class="form-check ps-0 q-box">
+                                    <div class="question">
+                                        <input class="form-check-input question_input " id="q1-yes" name="q1" type="radio" value="Yes">
+                                        <label class="form-check-label question_label" for="q1-yes">Yes</label>
+                                    </div>
+                                    <div class="question">
+                                        <input checked class="form-check-input question_input " id="q1-no" name="q1" type="radio" value="No">
+                                        <label class="form-check-label question_label" for="q1-no">No</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <h4>Are you experiencing a high fever, dry cough, tiredness and loss of taste or smell?</h4>
+                                <div class="form-check ps-0 q-box">
+                                    <div class="question">
+                                        <input class="form-check-input question_input " id="q2-yes" name="q2" type="radio" value="Yes">
+                                        <label class="form-check-label question_label" for="q2-yes">Yes</label>
+                                    </div>
+                                    <div class="question">
+                                        <input checked class="form-check-input question_input " id="q2-no" name="q2" type="radio" value="No">
+                                        <label class="form-check-label question_label" for="q2-no">No</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <h4>Are you having diarrhoea, stomach pain, conjunctivitis, vomiting and headache?</h4>
+                                <div class="form-check ps-0 q-box">
+                                    <div class="question">
+                                        <input class="form-check-input question_input " id="q3-yes" name="q3" type="radio" value="Yes">
+                                        <label class="form-check-label question_label" for="q3-yes">Yes</label>
+                                    </div>
+                                    <div class="question">
+                                        <input checked class="form-check-input question_input " id="q3-no" name="q3" type="radio" value="No">
+                                        <label class="form-check-label question_label" for="q3-no">No</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <h4>Have you traveled to any of these countries with the highest number of COVID-19 cases in the world for the past 2 weeks?</h4>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-check ps-0 q-box">
+                                            <div class="question">
+                                                <input class="form-check-input question_input " id="q4-uk" name="q4" type="radio" value="No">
+                                                <label class="form-check-label question_label" for="q4-uk">UK</label>
+                                            </div>
+                                            <div class="question">
+                                                <input class="form-check-input question_input " id="q4-us" name="q4" type="radio" value="No">
+                                                <label class="form-check-label question_label" for="q4-us">USA</label>
+                                            </div>
+                                            <div class="question">
+                                                <input class="form-check-input question_input " id="q4-br" name="q4" type="radio" value="No">
+                                                <label class="form-check-label question_label" for="q4-br">Brazil</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-check ps-0 q-box">
+                                            <div class="question">
+                                                <input class="form-check-input question_input " id="q4-gr" name="q4" type="radio" value="No">
+                                                <label class="form-check-label question_label" for="q4-gr">Germany</label>
+                                            </div>
+                                            <div class="question">
+                                                <input class="form-check-input question_input " id="q4-fr" name="q4" type="radio" value="No">
+                                                <label class="form-check-label question_label" for="q4-fr">France</label>
+                                            </div>
+                                            <div class="question">
+                                                <input class="form-check-input question_input " id="q4-ra" name="q4" type="radio" value="No">
+                                                <label class="form-check-label question_label" for="q4-ra">Rusia</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-check ps-0 q-box">
+                                            <div class="question">
+                                                <input class="form-check-input question_input " id="q4-no" name="q4" type="radio" value="eu">
+                                                <label class="form-check-label question_label" for="q4-no">No !, I did not travelled to any of these counteries</label>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="step">
+                                <h4>Are you experiencing any of these serious symptoms of COVID-19 below?</h4>
+                                <div class="form-check ps-0 q-box">
+                                    <div class="question">
+                                        <input class="form-check-input question_input " id="q5-breath" name="q5-b" type="radio" value="Breath">
+                                        <label class="form-check-label question_label" for="q5-breaths">Difficulty in breathing or shortness of breath</label>
+                                    </div>
+                                    <div class="question">
+                                        <input class="form-check-input question_input " id="q5-chest" name="q5-c" type="radio" value="Breath">
+                                        <label class="form-check-label question_label" for="q5-chest">Chest pain or pressure</label>
+                                    </div>
+                                    <div class="question">
+                                        <input class="form-check-input question_input " id="q5-loss" name="q5-l" type="radio" value="Breath">
+                                        <label class="form-check-label question_label" for="q5-loss">Loss of speech or movement</label>
+                                    </div>
+                                    <div class="question">
+                                        <input class="form-check-input question_input " id="q5-pale" name="q5-p" type="radio" value="Breath">
+                                        <label class="form-check-label question_label" for="q5-pale">Pale, gray or blue-colored skin, lips or nail beds</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <h4>Provide us with your personal information:</h4>
+                                <div class="mt-1">
+                                    <label class="form-label text-white">Full Name:</label>
+                                    <input class="form-control" id="full_name" name="full_name" type="text">
+                                </div>
+                                <div class="mt-2">
+                                    <label class="form-label text-white">Complete Address:</label>
+                                    <input class="form-control" id="address" name="address" type="text">
+                                </div>
+                                <div class="mt-2">
+                                    <label class="form-label text-white">Email:</label>
+                                    <input class="form-control" id="email" name="email" type="email">
+                                </div>
+                                <div class="mt-2">
+                                    <label class="form-label text-white">Phone / Mobile Number:</label>
+                                    <input class="form-control" id="phone" name="phone" type="text">
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-lg-2 col-md-2 col-3">
+                                        <label class="form-label text-white">Age:</label>
+                                        <div class="input-container">
+                                            <input class="form-control" id="age" name="age" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div id="input-container">
+                                            <input class="form-check-input" name="gender" type="radio" value="male">
+                                            <label class="form-check-label radio-lb text-white">Male</label>
+                                            <input class="form-check-input" name="gender" type="radio" value="female">
+                                            <label class="form-check-label radio-lb text-white">Female</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="mt-2">
+                                    <h4>That's about it! Stay healthy!</h4>
+                                    <p class="text-white">We will assess your information and will let you know soon if you need to get tested for COVID-19.</p>
+                                    <p class="text-white">Click on the submit button to continue.</p>
+                                </div>
+                            </div>
+                            <div id="success">
+                                <div class="mt-5">
+                                    <h4>Success! We'll get back to you ASAP!</h4>
+                                    <p class="text-white">Meanwhile, clean your hands often, use soap and water, or an alcohol-based hand rub, maintain a safe distance from anyone who is coughing or sneezing and always wear a mask when physical distancing is not possible.</p>
+                                    <a class="back-link" href="">Go back from the beginning ➜</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="q_box_button">
+                            <button id="prev-btn" type="button">Previous</button>
+                            <button id="next-btn" type="button">Next</button>
+                            <button id="submit-btn" type="button">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="preloader-wrapper">
+            <div id="preloader"></div>
+            <div class="preloader-section section-left"></div>
+            <div class="preloader-section section-right"></div>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+    <script src="BS/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

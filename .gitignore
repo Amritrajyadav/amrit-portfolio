@@ -1,0 +1,27 @@
+# Backend node modules
+backend/node_modules/
+
+# Root node modules
+node_modules/
+
+# Environment files
+backend/.env
+.env
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# Upload temp cache
+backend/uploads/temp/
+
+# Netlify
+.netlify/
