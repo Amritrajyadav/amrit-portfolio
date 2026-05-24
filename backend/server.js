@@ -32,6 +32,18 @@ app.use(cors({
 
 app.use(express.json({ limit: "2mb" }));
 app.use("/uploads", express.static(UPLOAD_DIR));
+app.use((req, res, next) => {
+  console.log("REQUEST HIT:", req.method, req.url);
+  next();
+});
+
+app.get("/debug", (req, res) => {
+  res.json({
+    success: true,
+    message: "Correct server.js is running",
+    time: new Date().toISOString()
+  });
+});
 
 if (!fs.existsSync(UPLOAD_DIR)) {
   fs.mkdirSync(UPLOAD_DIR, { recursive: true });
