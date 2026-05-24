@@ -24,11 +24,7 @@ app.use(
   })
 );
 app.use(cors({
-  origin: [
-    "http://127.0.0.1:5500",
-    "http://localhost:5500",
-    "https://amritraj1-portfolio.netlify.app"
-  ],
+  origin: true,
   credentials: true
 }));
 app.use(express.json({ limit: "2mb" }));
