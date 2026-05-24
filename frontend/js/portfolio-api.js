@@ -1,5 +1,5 @@
 (function () {
-  const API_BASE = window.API_BASE_URL || "http://localhost:5000";
+  const API_BASE = window.API_BASE_URL || "https://amrit-portfolio-91v1.onrender.com";
 
   const esc = (s = "") =>
     String(s).replace(/[&<>'"]/g, c => ({
@@ -119,8 +119,8 @@
 
     // Local iframe fix
     resumeUrl = resumeUrl.replace(
-      "http://localhost:5000",
-      "http://127.0.0.1:5000"
+      "http://127.0.0.1:5000",
+      "https://amrit-portfolio-91v1.onrender.com"
     );
 
     // Resume buttons

@@ -392,7 +392,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 async function loadDynamicPortfolioData() {
-    const API_BASE = window.API_BASE_URL || "http://localhost:5000";
+    const API_BASE = window.API_BASE_URL || "https://amrit-portfolio-91v1.onrender.com";
 
     function fullUrl(url) {
         if (!url) return "";

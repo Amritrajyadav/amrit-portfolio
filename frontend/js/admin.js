@@ -1,4 +1,4 @@
-const API_BASE = window.API_BASE_URL || "http://localhost:5000";
+const API_BASE = window.API_BASE_URL || "https://amrit-portfolio-91v1.onrender.com";
 let portfolioData = null;
 
 function token() {
@@ -424,7 +424,7 @@ async function uploadImage(fileInputId, targetInputId) {
 }
 
 function updatePreview(inputId) {
-  const API_BASE = window.API_BASE_URL || "http://localhost:5000";
+  const API_BASE = window.API_BASE_URL || "https://amrit-portfolio-91v1.onrender.com";
   const input = document.getElementById(inputId);
 
   let previewId = "";
