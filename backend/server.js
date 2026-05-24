@@ -23,7 +23,14 @@ app.use(
     frameguard: false,
   })
 );
-app.use(cors({ origin: process.env.FRONTEND_URL || "*", credentials: true }));
+app.use(cors({
+  origin: [
+    "http://127.0.0.1:5500",
+    "http://localhost:5500",
+    "https://amritraj1-portfolio.netlify.app"
+  ],
+  credentials: true
+}));
 app.use(express.json({ limit: "2mb" }));
 app.use("/uploads", express.static(UPLOAD_DIR));
 
