@@ -27,10 +27,22 @@ function escapeHtml(str = "") {
 }
 
 async function api(path, options = {}) {
-  const res = await fetch(API_BASE + path, options);
-  const data = await res.json().catch(() => ({}));
-  if (!res.ok) throw new Error(data.message || "Request failed");
-  return data;
+  const url = API_BASE + path;
+  console.log("API CALL:", url);
+
+  try {
+    const res = await fetch(url, options);
+    const data = await res.json().catch(() => ({}));
+
+    if (!res.ok) {
+      throw new Error(data.message || `Request failed: ${res.status}`);
+    }
+
+    return data;
+  } catch (err) {
+    console.error("API ERROR:", err);
+    throw err;
+  }
 }
 
 async function loginAdmin() {
