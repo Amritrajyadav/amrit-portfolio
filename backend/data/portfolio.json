@@ -1,0 +1,30 @@
+{
+  "profile": {
+    "name": "Amrit Raj",
+    "role": "Full Stack Web Developer",
+    "email": "amritrajyadav7@gmail.com",
+    "location": "India",
+    "status": "Open for Internship",
+    "github": "https://github.com/Amritrajyadav",
+    "linkedin": "#"
+  },
+  "about": "I build clean, practical and responsive web applications using HTML, CSS, JavaScript, Node.js, Express.js and MySQL. My strongest project is EduPlatform, a full stack LMS.",
+  "projects": [
+    {
+      "id": "eduplatform",
+      "title": "EduPlatform — Full Stack LMS",
+      "tech": "HTML, CSS, JavaScript, Node.js, Express.js, MySQL",
+      "live": "https://amrit-eduplatform.netlify.app/",
+      "github": "https://github.com/Amritrajyadav/EduPlatform",
+      "description": "A complete LMS platform with student, teacher and admin dashboards, course purchase, mock tests, certificates and role-based pages."
+    }
+  ],
+  "skills": [
+    {"id":"frontend","title":"Frontend","description":"HTML, CSS, JavaScript, Bootstrap, Responsive Design"},
+    {"id":"backend","title":"Backend","description":"Node.js, Express.js, REST APIs, Authentication"},
+    {"id":"database","title":"Database","description":"MySQL, SQL Queries, Database Management"}
+  ],
+  "certificates": [],
+  "resumeNote": "",
+  "resumeUrl": "download/Amrit_Raj_Resume.pdf"
+}
