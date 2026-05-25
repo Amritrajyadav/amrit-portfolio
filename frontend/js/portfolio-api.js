@@ -1,5 +1,5 @@
 (function () {
-  const API_BASE = window.API_BASE_URL || "https://amrit-portfolio-91v1.onrender.com";
+  const API_BASE = window.API_BASE_URL || "https://amrit-portfolio-xhbh.onrender.com";
 
   const esc = (s = "") =>
     String(s).replace(/[&<>'"]/g, c => ({
@@ -11,37 +11,18 @@
     }[c]));
 
   function fullUrl(url) {
-
-  if (!url) return "";
-
-  // external link
-  if (url.startsWith("http")) {
+    if (!url) return "";
+    if (url.startsWith("http")) return url;
+    if (url.startsWith("/uploads")) return API_BASE + url;
+    if (url.startsWith("uploads")) return API_BASE + "/" + url;
     return url;
   }
 
-  // uploads folder
-  if (url.startsWith("/uploads")) {
-    return API_BASE + url;
-  }
-
-  // uploads without slash
-  if (url.startsWith("uploads")) {
-    return API_BASE + "/" + url;
-  }
-
-  // local download folder
-  if (url.startsWith("download/")) {
-    return url;
-  }
-
-  return url;
-}
   async function loadPortfolio() {
     try {
       const res = await fetch(API_BASE + "/api/portfolio");
-      if (!res.ok) return;
-
       const json = await res.json();
+
       if (!json.success) return;
 
       const data = json.data || {};
@@ -50,20 +31,17 @@
       applyAbout(data.about || "");
       applyResume(data.resumeUrl || "", data.resumeNote || "");
       renderSkills(data.skills || []);
-      renderMainProject(data.projects || []);
+      renderProjects(data.projects || []);
       renderCertificates(data.certificates || []);
       renderDynamicUpdates(data);
-
     } catch (error) {
       console.error("Portfolio API load error:", error);
     }
   }
 
   function applyProfile(p) {
-    const profileImage = document.getElementById("profileImageEl");
-    if (profileImage && p.image) {
-      profileImage.src = fullUrl(p.image);
-    }
+    const img = document.getElementById("profileImageEl");
+    if (img && p.image) img.src = fullUrl(p.image);
 
     document.querySelectorAll(".profile-box h2").forEach(el => {
       if (p.name) el.textContent = p.name;
@@ -93,79 +71,63 @@
     document.querySelectorAll('a[href^="mailto:"]').forEach(a => {
       if (p.email) {
         a.href = "mailto:" + p.email;
-        a.textContent = "Email: " + p.email;
+        a.textContent = a.closest(".socials") ? "✉" : "Email: " + p.email;
       }
     });
 
-    const githubLink = document.querySelector('.contact-info a[href*="github"]');
-    if (githubLink && p.github) {
-      githubLink.href = p.github;
-      githubLink.textContent = "GitHub: " + p.github;
+    document.querySelectorAll(".socials a").forEach(a => {
+      const txt = a.textContent.trim().toLowerCase();
+
+      if (txt === "gh" && p.github) {
+        a.href = p.github;
+      }
+
+      if (txt === "in" && p.linkedin) {
+        a.href = p.linkedin;
+      }
+    });
+
+    const contactGithub = document.querySelector('.contact-info a[href*="github"]');
+    if (contactGithub && p.github) {
+      contactGithub.href = p.github;
+      contactGithub.textContent = "GitHub: " + p.github;
+    }
+
+    const contactLinkedin = Array.from(document.querySelectorAll(".contact-info a"))
+      .find(a => a.textContent.toLowerCase().includes("linkedin"));
+
+    if (contactLinkedin && p.linkedin) {
+      contactLinkedin.href = p.linkedin;
+      contactLinkedin.textContent = "LinkedIn: " + p.linkedin;
+      contactLinkedin.target = "_blank";
     }
   }
 
   function applyAbout(text) {
-    const aboutBox = document.querySelector(".about-text");
-    if (aboutBox && text) {
-      aboutBox.innerHTML = `<p>${esc(text)}</p>`;
-    }
+    const box = document.querySelector(".about-text");
+    if (box && text) box.innerHTML = `<p>${esc(text)}</p>`;
   }
 
- function applyResume(url, note) {
+  function applyResume(url, note) {
+    const resumeUrl = fullUrl(url);
 
-  if (url) {
+    if (resumeUrl) {
+      const downloadBtn = document.getElementById("resumeDownloadBtn");
+      const viewBtn = document.getElementById("resumeViewBtn");
+      const frame = document.getElementById("resumeFrame");
 
-    let resumeUrl = fullUrl(url);
-
-    // Local iframe fix
-    resumeUrl = resumeUrl.replace(
-      "http://127.0.0.1:5000",
-      "https://amrit-portfolio-91v1.onrender.com"
-    );
-
-    // Resume buttons
-    const resumeDownloadBtn = document.getElementById("resumeDownloadBtn");
-    const resumeViewBtn = document.getElementById("resumeViewBtn");
-
-   if (resumeDownloadBtn) {
-      resumeDownloadBtn.href = encodeURI(resumeUrl);
+      if (downloadBtn) downloadBtn.href = encodeURI(resumeUrl);
+      if (viewBtn) viewBtn.href = encodeURI(resumeUrl);
+      if (frame) frame.src = encodeURI(resumeUrl);
     }
 
-    if (resumeViewBtn) {
-      resumeViewBtn.href = encodeURI(resumeUrl);
-    }
-
-    // Old static resume links
-    document
-      .querySelectorAll(
-        'a[href*="Amrit_Raj_Resume.pdf"], a[href*="Amrit_Raj (updated).pdf"]'
-      )
-      .forEach(a => {
-        a.href = resumeUrl;
-      });
-
-    // Resume preview iframe
-    const frame = document.querySelector(".resume-preview-box iframe");
-
-    if (frame) {
-      console.log("RESUME IFRAME URL:", resumeUrl);
-      frame.src = encodeURI(resumeUrl);
-    }
+    const resumeText = document.querySelector(".resume-card p");
+    if (resumeText && note) resumeText.textContent = note;
   }
-
-  // Resume note
-  const resumeCardText = document.querySelector(".resume-card p");
-
-  if (resumeCardText && note) {
-    resumeCardText.textContent = note;
-  }
-}
 
   function renderSkills(skills) {
-    if (!skills.length) return;
-
     const grid = document.querySelector(".skill-grid");
-    if (!grid) return;
+    if (!grid || !skills.length) return;
 
     grid.innerHTML = skills.map(skill => `
       <div class="skill-card reveal active">
@@ -175,40 +137,36 @@
     `).join("");
   }
 
-  function renderMainProject(projects) {
+  function renderProjects(projects) {
     if (!projects.length) return;
 
-    const project = projects[0];
+    const first = projects[0];
 
     const img = document.getElementById("projectImage");
-    if (img && project.image) {
-      img.src = fullUrl(project.image);
-    }
+    if (img && first.image) img.src = fullUrl(first.image);
 
     const title = document.querySelector(".project-content h3");
-    if (title && project.title) title.textContent = project.title;
+    if (title) title.textContent = first.title || "Project";
 
     const desc = document.querySelector(".project-content p");
-    if (desc && project.description) desc.textContent = project.description;
+    if (desc) desc.textContent = first.description || "";
 
     const stack = document.querySelector(".stack p");
-    if (stack && project.stack) stack.textContent = project.stack;
+    if (stack) stack.textContent = first.stack || "";
 
     const btnBox = document.querySelector(".project-buttons");
     if (btnBox) {
       btnBox.innerHTML = `
-        ${project.liveUrl ? `<a href="${esc(project.liveUrl)}" target="_blank" class="btn primary">Live Demo</a>` : ""}
-        ${project.githubUrl ? `<a href="${esc(project.githubUrl)}" target="_blank" class="btn secondary">GitHub</a>` : ""}
+        ${first.liveUrl ? `<a href="${esc(first.liveUrl)}" target="_blank" class="btn primary">Live Demo</a>` : ""}
+        ${first.githubUrl ? `<a href="${esc(first.githubUrl)}" target="_blank" class="btn secondary">GitHub</a>` : ""}
         <button class="btn ghost" onclick="openProjectModal()">Details</button>
       `;
     }
   }
 
   function renderCertificates(certificates) {
-    if (!certificates.length) return;
-
     const grid = document.querySelector(".certificate-grid");
-    if (!grid) return;
+    if (!grid || !certificates.length) return;
 
     grid.innerHTML = certificates.map(cert => `
       <div class="certificate-card reveal active">
@@ -225,47 +183,40 @@
     const container = document.getElementById("adminDynamicGrid");
     if (!container) return;
 
-    let html = "";
+    const items = [];
 
     (data.projects || []).forEach(p => {
-      html += `
+      items.push(`
         <div class="skill-card reveal active">
           ${p.image ? `<img src="${fullUrl(p.image)}" alt="${esc(p.title)}">` : ""}
           <h3>${esc(p.title)}</h3>
           <p>${esc(p.description)}</p>
           <p><strong>Tech:</strong> ${esc(p.stack)}</p>
+          ${p.liveUrl ? `<a href="${esc(p.liveUrl)}" target="_blank" class="btn primary">Live Demo</a>` : ""}
+          ${p.githubUrl ? `<a href="${esc(p.githubUrl)}" target="_blank" class="btn secondary">GitHub</a>` : ""}
         </div>
-      `;
+      `);
     });
 
     (data.skills || []).forEach(s => {
-      html += `
+      items.push(`
         <div class="skill-card reveal active">
           <h3>${esc(s.title)}</h3>
           <p>${esc(s.description)}</p>
         </div>
-      `;
+      `);
     });
 
     (data.certificates || []).forEach(c => {
-      html += `
+      items.push(`
         <div class="skill-card reveal active">
           <h3>${esc(c.title)}</h3>
           <p>${esc(c.issuer)}</p>
         </div>
-      `;
+      `);
     });
 
-    if (data.resumeNote) {
-      html += `
-        <div class="skill-card reveal active">
-          <h3>Resume Update</h3>
-          <p>${esc(data.resumeNote)}</p>
-        </div>
-      `;
-    }
-
-    container.innerHTML = html || `
+    container.innerHTML = items.join("") || `
       <div class="skill-card reveal active">
         <h3>No updates yet</h3>
         <p>Use admin dashboard to add custom projects, certificates and skills.</p>
