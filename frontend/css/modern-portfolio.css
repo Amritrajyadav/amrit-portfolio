@@ -1501,3 +1501,31 @@ body.theme-light .resume-actions a:first-child{
         grid-template-columns: 1fr !important;
     }
 }
+
+
+.project-card,
+.certificate-card,
+.skill-card {
+  overflow: hidden;
+}
+
+.project-card img,
+#projectImage {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 18px;
+  display: block;
+  margin-bottom: 18px;
+}
+
+.certificate-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: contain;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 12px;
+  display: block;
+  margin-bottom: 18px;
+}
