@@ -140,28 +140,21 @@
   function renderProjects(projects) {
     if (!projects.length) return;
 
-    const first = projects.find(p => p.title.toLowerCase().includes("eduplatform")) || projects[0];
+    const grid = document.getElementById("projectGrid");
+    if (!grid) return;
 
-    const img = document.getElementById("projectImage");
-    if (img && first.image) img.src = fullUrl(first.image);
-
-    const title = document.querySelector(".project-content h3");
-    if (title) title.textContent = first.title || "Project";
-
-    const desc = document.querySelector(".project-content p");
-    if (desc) desc.textContent = first.description || "";
-
-    const stack = document.querySelector(".stack p");
-    if (stack) stack.textContent = first.stack || "";
-
-    const btnBox = document.querySelector(".project-buttons");
-    if (btnBox) {
-      btnBox.innerHTML = `
-        ${first.liveUrl ? `<a href="${esc(first.liveUrl)}" target="_blank" class="btn primary">Live Demo</a>` : ""}
-        ${first.githubUrl ? `<a href="${esc(first.githubUrl)}" target="_blank" class="btn secondary">GitHub</a>` : ""}
-        <button class="btn ghost" onclick="openProjectModal()">Details</button>
-      `;
-    }
+    grid.innerHTML = projects.map(p => `
+      <div class="project-card reveal active">
+        ${p.image ? `<img src="${fullUrl(p.image)}" alt="${esc(p.title)}">` : ""}
+        <h3>${esc(p.title)}</h3>
+        <p>${esc(p.description)}</p>
+        <p><strong>Tech:</strong> ${esc(p.stack)}</p>
+        <div class="project-buttons">
+          ${p.liveUrl ? `<a href="${esc(p.liveUrl)}" target="_blank" class="btn primary">Live Demo</a>` : ""}
+          ${p.githubUrl ? `<a href="${esc(p.githubUrl)}" target="_blank" class="btn secondary">GitHub</a>` : ""}
+        </div>
+      </div>
+    `).join("");
   }
 
   function renderCertificates(certificates) {
@@ -188,7 +181,6 @@
     (data.projects || []).forEach(p => {
       items.push(`
         <div class="skill-card reveal active">
-          ${p.image ? `<img src="${fullUrl(p.image)}" alt="${esc(p.title)}">` : ""}
           <h3>${esc(p.title)}</h3>
           <p>${esc(p.description)}</p>
           <p><strong>Tech:</strong> ${esc(p.stack)}</p>
