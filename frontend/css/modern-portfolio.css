@@ -1581,3 +1581,32 @@ body.theme-light .resume-actions a:first-child{
 .project-card p {
     margin-bottom: 10px;
 }
+
+/* FINAL FIX: Other Projects card layout */
+.project-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 360px)) !important;
+  gap: 28px !important;
+  justify-content: start !important;
+  align-items: stretch !important;
+}
+
+.project-card {
+  width: 100% !important;
+  max-width: 360px !important;
+  min-height: 420px !important;
+  background: rgba(15, 23, 42, 0.76) !important;
+  border: 1px solid rgba(148, 163, 184, 0.16) !important;
+  border-radius: 24px !important;
+  padding: 20px !important;
+  overflow: hidden !important;
+}
+
+.project-card img {
+  width: 100% !important;
+  height: 210px !important;
+  object-fit: cover !important;
+  border-radius: 16px !important;
+  display: block !important;
+  margin-bottom: 16px !important;
+}
