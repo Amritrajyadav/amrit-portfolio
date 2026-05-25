@@ -9,12 +9,18 @@ const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
 const db = require("./config/db");
+const { v2: cloudinary } = require("cloudinary");
 
 const app = express();
 
 const PORT = process.env.PORT || 5000;
 const UPLOAD_DIR = path.join(__dirname, "uploads");
 const JWT_SECRET = process.env.JWT_SECRET || "change-this-secret";
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 app.use(cors({
   origin: "*",
@@ -459,25 +465,23 @@ app.put("/api/admin/resume-note", auth, async (req, res) => {
 app.post("/api/admin/upload-image", auth, upload.single("image"), async (req, res) => {
   try {
     if (!req.file) {
-      return res.status(400).json({
-        success: false,
-        message: "Image file required",
-      });
+      return res.status(400).json({ success: false, message: "Image file required" });
     }
 
-    const baseUrl = `${req.protocol}://${req.get("host")}`;
-    const imageUrl = `${baseUrl}/uploads/${req.file.filename}`;
+    const result = await cloudinary.uploader.upload(req.file.path, {
+      folder: "amrit-portfolio",
+      resource_type: "image",
+    });
+
+    if (fs.existsSync(req.file.path)) fs.unlinkSync(req.file.path);
 
     res.json({
       success: true,
-      imageUrl,
+      imageUrl: result.secure_url,
     });
   } catch (error) {
-    console.error("Image upload error:", error);
-    res.status(500).json({
-      success: false,
-      message: "Image upload error",
-    });
+    console.error("Cloudinary image upload error:", error);
+    res.status(500).json({ success: false, message: "Image upload error" });
   }
 });
 
@@ -490,8 +494,16 @@ app.post("/api/admin/upload-resume", auth, upload.single("resume"), async (req, 
       });
     }
 
-    const baseUrl = `${req.protocol}://${req.get("host")}`;
-    const resumeUrl = `${baseUrl}/uploads/${req.file.filename}`;
+    const result = await cloudinary.uploader.upload(req.file.path, {
+      folder: "amrit-portfolio/resume",
+      resource_type: "raw",
+    });
+
+    if (fs.existsSync(req.file.path)) {
+      fs.unlinkSync(req.file.path);
+    }
+
+    const resumeUrl = result.secure_url;
 
     await db.query(
       `INSERT INTO resume (id, resumeUrl)
@@ -500,10 +512,17 @@ app.post("/api/admin/upload-resume", auth, upload.single("resume"), async (req, 
       [resumeUrl]
     );
 
-    res.json({ success: true, resumeUrl });
+    res.json({
+      success: true,
+      resumeUrl,
+    });
   } catch (error) {
     console.error("Resume upload error:", error);
-    res.status(500).json({ success: false, message: "Resume upload error" });
+
+    res.status(500).json({
+      success: false,
+      message: "Resume upload error",
+    });
   }
 });
 app.delete("/api/admin/resume", auth, async (req, res) => {
