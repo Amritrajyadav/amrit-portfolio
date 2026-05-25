@@ -140,7 +140,7 @@
   function renderProjects(projects) {
     if (!projects.length) return;
 
-    const first = projects[0];
+    const first = projects.find(p => p.title.toLowerCase().includes("eduplatform")) || projects[0];
 
     const img = document.getElementById("projectImage");
     if (img && first.image) img.src = fullUrl(first.image);

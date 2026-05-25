@@ -1529,3 +1529,25 @@ body.theme-light .resume-actions a:first-child{
   display: block;
   margin-bottom: 18px;
 }
+
+.admin-dynamic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.admin-dynamic-grid .skill-card {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.admin-dynamic-grid .skill-card img,
+.project-card img,
+.certificate-card img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 18px;
+  display: block;
+  margin-bottom: 16px;
+}
