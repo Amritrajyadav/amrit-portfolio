@@ -112,6 +112,23 @@
         <input id="projectGithub" placeholder="GitHub URL" />
         <textarea id="projectDescription" placeholder="Project Description"></textarea>
         <textarea id="projectFeatures" placeholder="Features"></textarea>
+        <label>Project Video URL</label>
+        <input id="projectVideoUrl" placeholder="Paste project video URL or upload below" />
+
+        <input type="file" id="projectVideoFile" accept="video/*" />
+
+        <button
+          type="button"
+          onclick="uploadVideo('projectVideoFile','projectVideoUrl')"
+        >
+          Upload Project Video
+        </button>
+
+        <video
+          id="projectVideoPreview"
+          class="portfolio-video"
+          controls
+        ></video>
 
         <button type="submit">Save Project</button>
         <button type="button" onclick="resetProjectForm()">Reset</button>

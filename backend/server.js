@@ -63,7 +63,7 @@ const upload = multer({
       cb(null, Date.now() + "-" + safe);
     },
   }),
-  limits: { fileSize: 8 * 1024 * 1024 },
+  limits: { fileSize: 50 * 1024 * 1024 },
 });
 
 function makeId(text = "item") {
@@ -251,12 +251,13 @@ app.post("/api/admin/projects", auth, async (req, res) => {
       features: req.body.features || "",
       category: req.body.category || "fullstack",
       level: req.body.level || "major",
+      videoUrl: req.body.videoUrl || "",
     };
 
     await db.query(
       `INSERT INTO projects 
-      (id, title, description, image, liveUrl, githubUrl, stack, features, category, level)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      (id, title, description, image, liveUrl, githubUrl, stack, features, category, level, videoUrl)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         item.id,
         item.title,
@@ -268,6 +269,7 @@ app.post("/api/admin/projects", auth, async (req, res) => {
         item.features,
         item.category,
         item.level,
+        item.videoUrl,
       ]
     );
 
@@ -290,7 +292,8 @@ app.put("/api/admin/projects/:id", auth, async (req, res) => {
        stack=?,
        features=?,
        category=?,
-       level=?
+       level=?,
+       videoUrl=?
        WHERE id=?`,
       [
         req.body.title || "",
@@ -302,6 +305,7 @@ app.put("/api/admin/projects/:id", auth, async (req, res) => {
         req.body.features || "",
         req.body.category || "fullstack",
         req.body.level || "major",
+        req.body.videoUrl || "",
         req.params.id,
       ]
     );
@@ -490,6 +494,42 @@ app.post("/api/admin/upload-image", auth, upload.single("image"), async (req, re
   } catch (error) {
     console.error("Cloudinary image upload error:", error);
     res.status(500).json({ success: false, message: "Image upload error" });
+  }
+});
+
+app.post("/api/admin/upload-video", auth, upload.single("video"), async (req, res) => {
+
+  try {
+
+    if (!req.file) {
+      return res.status(400).json({
+        success: false,
+        message: "Video file required"
+      });
+    }
+
+    const result = await cloudinary.uploader.upload(req.file.path, {
+      folder: "amrit-portfolio/videos",
+      resource_type: "video",
+    });
+
+    if (fs.existsSync(req.file.path)) {
+      fs.unlinkSync(req.file.path);
+    }
+
+    res.json({
+      success: true,
+      videoUrl: result.secure_url,
+    });
+
+  } catch (error) {
+
+    console.error("Cloudinary video upload error:", error);
+
+    res.status(500).json({
+      success: false,
+      message: "Video upload error",
+    });
   }
 });
 

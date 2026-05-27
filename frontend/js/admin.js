@@ -223,6 +223,7 @@ projectForm.addEventListener("submit", async e => {
     githubUrl: projectGithub.value,
     stack: projectTech.value,
     features: projectFeatures.value,
+    videoUrl: projectVideoUrl.value,
     category: projectCategory.value,
     level: projectLevel.value,
   });
@@ -318,6 +319,8 @@ function editItem(type, id) {
     projectGithub.value = item.githubUrl || "";
     projectDescription.value = item.description || "";
     projectFeatures.value = item.features || "";
+    projectVideoUrl.value = item.videoUrl || "";
+    updateVideoPreview();
 
     projectCategory.value = item.category || "fullstack";
     projectLevel.value = item.level || "major";
@@ -461,4 +464,57 @@ function updatePreview(inputId) {
   }
 
   preview.src = url || "";
+}
+
+
+async function uploadVideo(fileInputId, targetInputId) {
+
+  const fileInput = document.getElementById(fileInputId);
+  const targetInput = document.getElementById(targetInputId);
+
+  const file = fileInput.files[0];
+
+  if (!file) {
+    alert("Please select video first");
+    return;
+  }
+
+  const fd = new FormData();
+  fd.append("video", file);
+
+  try {
+
+    const res = await fetch(API_BASE + "/api/admin/upload-video", {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + token(),
+      },
+      body: fd,
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(data.message || "Video upload failed");
+    }
+
+    targetInput.value = data.videoUrl;
+
+    updateVideoPreview();
+
+    alert("Video uploaded successfully");
+
+  } catch (err) {
+    alert(err.message);
+  }
+}
+
+function updateVideoPreview() {
+
+  const input = document.getElementById("projectVideoUrl");
+  const preview = document.getElementById("projectVideoPreview");
+
+  if (!input || !preview) return;
+
+  preview.src = input.value || "";
 }

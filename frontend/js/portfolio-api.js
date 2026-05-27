@@ -32,6 +32,7 @@
       applyResume(data.resumeUrl || "", data.resumeNote || "");
       renderSkills(data.skills || []);
       renderProjects(data.projects || []);
+      renderProjectVideoCards(data.projects || []);
       renderCertificates(data.certificates || []);
       renderDynamicUpdates(data);
     } catch (error) {
@@ -197,6 +198,24 @@
     fullMini.innerHTML = fullMiniProjects.map(createCard).join("");
     dataMajor.innerHTML = dataMajorProjects.map(createCard).join("");
     dataMini.innerHTML = dataMiniProjects.map(createCard).join("");
+  }
+
+  
+  function renderProjectVideoCards(projects) {
+    const grid = document.getElementById("projectVideoGrid");
+    if (!grid) return;
+
+    const videoProjects = projects.filter(p => p.videoUrl);
+
+    grid.innerHTML = videoProjects.map(p => `
+      <div class="project-video-card reveal active">
+        <video src="${fullUrl(p.videoUrl)}" autoplay muted loop controls playsinline></video>
+        <div class="project-video-content">
+          <h3>${esc(p.title)}</h3>
+          <p>${esc(p.description || "")}</p>
+        </div>
+      </div>
+    `).join("");
   }
 
   function renderCertificates(certificates) {
