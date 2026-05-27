@@ -1674,17 +1674,3 @@ body.theme-light .resume-actions a:first-child{
     border:1px solid rgba(255,255,255,0.1);
 }
 
-.admin-form select {
-  width: 100%;
-  padding: 15px 16px;
-  border-radius: 14px;
-  border: 1px solid rgba(148, 163, 184, 0.25);
-  background: #0f172a;
-  color: #ffffff;
-  font-size: 15px;
-  outline: none;
-}
-
-.admin-form select:focus {
-  border-color: #7c3aed;
-}
