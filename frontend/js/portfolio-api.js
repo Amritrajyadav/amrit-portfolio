@@ -200,27 +200,57 @@
     dataMini.innerHTML = dataMiniProjects.map(createCard).join("");
   }
 
-  const titleEl = document.getElementById("videoSectionTitle");
+  
   function renderProjectVideoCards(projects) {
+
     const grid = document.getElementById("projectVideoGrid");
+
     if (!grid) return;
 
     const videoProjects = projects.filter(p => p.videoUrl);
-    const titleEl = document.getElementById("videoSectionTitle");
-
-    if (videoProjects.length && titleEl) {
-      titleEl.textContent = videoProjects[0].title + " - Video Demo";
-  }
 
     grid.innerHTML = videoProjects.map(p => `
+
       <div class="project-video-card reveal active">
-        <video src="${fullUrl(p.videoUrl)}" autoplay muted loop controls playsinline></video>
+
+        <video
+          src="${fullUrl(p.videoUrl)}"
+          autoplay
+          muted
+          loop
+          controls
+          playsinline
+        ></video>
+
         <div class="project-video-content">
-          <h3>${esc(p.title)}</h3>
+
+          <h3>${esc(p.videoTitle || p.title)}</h3>
+
           <p>${esc(p.description || "")}</p>
+
+          <div class="project-buttons">
+
+            <button
+              class="btn secondary"
+              onclick="toggleDynamicMute(this)"
+            >
+              Mute / Unmute
+            </button>
+
+            <button
+              class="btn primary"
+              onclick="openDynamicFullscreen(this)"
+            >
+              Full Screen
+            </button>
+
+            </div>
+
+          </div>
+
         </div>
-      </div>
-    `).join("");
+
+      `).join("");
   }
 
   function renderCertificates(certificates) {

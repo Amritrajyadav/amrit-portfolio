@@ -391,3 +391,30 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
+
+function toggleLmsMute() {
+  const video = document.getElementById("lmsDemoVideo");
+  if (!video) return;
+  video.muted = !video.muted;
+}
+
+function openLmsFullscreen() {
+  const video = document.getElementById("lmsDemoVideo");
+  if (!video) return;
+  video.requestFullscreen?.();
+}
+
+function toggleDynamicMute(button) {
+  const card = button.closest(".project-video-card");
+  const video = card?.querySelector("video");
+  if (!video) return;
+  video.muted = !video.muted;
+}
+
+function openDynamicFullscreen(button) {
+  const card = button.closest(".project-video-card");
+  const video = card?.querySelector("video");
+  if (!video) return;
+  video.requestFullscreen?.();
+}

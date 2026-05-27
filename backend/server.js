@@ -252,12 +252,13 @@ app.post("/api/admin/projects", auth, async (req, res) => {
       category: req.body.category || "fullstack",
       level: req.body.level || "major",
       videoUrl: req.body.videoUrl || "",
+      videoTitle: req.body.videoTitle || "",
     };
 
     await db.query(
       `INSERT INTO projects 
-      (id, title, description, image, liveUrl, githubUrl, stack, features, category, level, videoUrl)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      (id, title, description, image, liveUrl, githubUrl, stack, features, category, level, videoUrl, videoTitle)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         item.id,
         item.title,
@@ -270,6 +271,7 @@ app.post("/api/admin/projects", auth, async (req, res) => {
         item.category,
         item.level,
         item.videoUrl,
+        item.videoTitle,
       ]
     );
 
@@ -293,7 +295,8 @@ app.put("/api/admin/projects/:id", auth, async (req, res) => {
        features=?,
        category=?,
        level=?,
-       videoUrl=?
+       videoUrl=?,
+       videoTitle=?
        WHERE id=?`,
       [
         req.body.title || "",
@@ -306,6 +309,7 @@ app.put("/api/admin/projects/:id", auth, async (req, res) => {
         req.body.category || "fullstack",
         req.body.level || "major",
         req.body.videoUrl || "",
+        req.body.videoTitle || "",
         req.params.id,
       ]
     );

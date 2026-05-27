@@ -11,12 +11,12 @@
 
     <link rel="stylesheet" href="css/modern-portfolio.css">
 
-<meta property="og:title" content="Amrit Raj | Full Stack Developer | Data Analyst | Data Analyst">
+<meta property="og:title" content="Amrit Raj | Full Stack Developer | Data Analyst | ">
 <meta property="og:description" content="Advanced portfolio of Amrit Raj featuring EduPlatform LMS, skills, resume, admin dashboard and interactive portfolio features.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="img/projects/admin-dashboard.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Amrit Raj | Full Stack Developer | Data Analyst | Data Analyst">
+<meta name="twitter:title" content="Amrit Raj | Full Stack Developer | Data Analyst |">
 <meta name="twitter:description" content="Full Stack Developer portfolio with LMS project, resume and interactive sections.">
 <meta name="theme-color" content="#2563eb">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> 
@@ -428,6 +428,56 @@
     <div class="section-head reveal">
         <span>Project Demo</span>
         <h2 id="videoSectionTitle">Project Video Showcase</h2>
+    </div>
+
+    <div class="project-video-card featured-video reveal active">
+
+        <video
+            id="lmsDemoVideo"
+            class="project-demo-video"
+            autoplay
+            muted
+            loop
+            controls
+            playsinline
+        >
+            <source src="videos/Project Video.mp4" type="video/mp4">
+        </video>
+
+        <div class="project-video-content">
+
+            <span class="video-badge">Featured LMS Demo</span>
+
+            <h3>EduPlatform LMS</h3>
+
+            <p>
+                Complete LMS walkthrough including authentication,
+                student dashboard, teacher upload system,
+                admin analytics, mock tests and certificates.
+            </p>
+
+            <div class="project-buttons">
+
+                <button
+                    class="btn secondary"
+                    type="button"
+                    onclick="toggleLmsMute()"
+                >
+                    Mute / Unmute
+                </button>
+
+                <button
+                    class="btn primary"
+                    type="button"
+                    onclick="openLmsFullscreen()"
+                >
+                    Full Screen
+                </button>
+
+            </div>
+
+        </div>
+
     </div>
 
 
