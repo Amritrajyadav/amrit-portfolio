@@ -1698,3 +1698,15 @@ body.theme-light .resume-actions a:first-child{
 .project-video-content{
   padding:18px;
 }
+
+.featured-video{
+  max-width: 420px;
+}
+
+.featured-video video,
+.featured-video .project-demo-video{
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  display: block;
+}
