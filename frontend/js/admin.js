@@ -224,6 +224,7 @@ projectForm.addEventListener("submit", async e => {
     stack: projectTech.value,
     features: projectFeatures.value,
     videoUrl: projectVideoUrl.value,
+    videoTitle: projectVideoTitle.value,
     category: projectCategory.value,
     level: projectLevel.value,
   });
@@ -320,6 +321,7 @@ function editItem(type, id) {
     projectDescription.value = item.description || "";
     projectFeatures.value = item.features || "";
     projectVideoUrl.value = item.videoUrl || "";
+    projectVideoTitle.value = item.videoTitle || "";
     updateVideoPreview();
 
     projectCategory.value = item.category || "fullstack";
@@ -365,6 +367,7 @@ function resetProjectForm() {
   projectImagePreview.src = "";
   projectVideoPreview.src = "";
   projectVideoPreview.style.display = "none";
+  projectVideoTitle.value = "";
 }
 
 function resetSkillForm() {
@@ -527,4 +530,20 @@ function updateVideoPreview() {
 
   preview.src = input.value;
   preview.style.display = "block";
+}
+
+function removeProjectVideo() {
+
+  projectVideoUrl.value = "";
+  projectVideoFile.value = "";
+  projectVideoTitle.value = "";
+
+  const preview = document.getElementById("projectVideoPreview");
+
+  if (preview) {
+    preview.src = "";
+    preview.style.display = "none";
+  }
+
+  alert("Video removed. Click Save Project.");
 }
