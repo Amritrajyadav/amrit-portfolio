@@ -1610,3 +1610,59 @@ body.theme-light .resume-actions a:first-child{
   display: block !important;
   margin-bottom: 16px !important;
 }
+
+
+/* =========================
+   PROJECT CATEGORY SECTIONS
+========================= */
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 28px;
+    margin-top: 30px;
+}
+
+.project-card {
+    background: rgba(15, 23, 42, 0.82);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+    overflow: hidden;
+    transition: 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+}
+
+.project-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+
+.project-card h3 {
+    font-size: 1.3rem;
+    margin: 18px 20px 10px;
+}
+
+.project-card p {
+    margin: 0 20px 14px;
+    line-height: 1.6;
+}
+
+.project-card .project-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 0 20px 20px;
+}
+
+#fullstack-major-projects,
+#fullstack-mini-projects,
+#data-major-projects,
+#data-mini-projects {
+    margin-top: 40px;
+}

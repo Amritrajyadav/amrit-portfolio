@@ -223,6 +223,8 @@ projectForm.addEventListener("submit", async e => {
     githubUrl: projectGithub.value,
     stack: projectTech.value,
     features: projectFeatures.value,
+    category: projectCategory.value,
+    level: projectLevel.value,
   });
 
   resetProjectForm();
@@ -316,6 +318,10 @@ function editItem(type, id) {
     projectGithub.value = item.githubUrl || "";
     projectDescription.value = item.description || "";
     projectFeatures.value = item.features || "";
+
+    projectCategory.value = item.category || "fullstack";
+    projectLevel.value = item.level || "major";
+
     location.hash = "projectBox";
   }
 

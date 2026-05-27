@@ -137,24 +137,66 @@
     `).join("");
   }
 
-  function renderProjects(projects) {
+ function renderProjects(projects) {
     if (!projects.length) return;
 
-    const grid = document.getElementById("projectGrid");
-    if (!grid) return;
+    const fullMajor = document.getElementById("fullstackMajorGrid");
+    const fullMini = document.getElementById("fullstackMiniGrid");
+    const dataMajor = document.getElementById("dataMajorGrid");
+    const dataMini = document.getElementById("dataMiniGrid");
 
-    grid.innerHTML = projects.map(p => `
+    if (!fullMajor || !fullMini || !dataMajor || !dataMini) return;
+
+    const createCard = (p) => `
       <div class="project-card reveal active">
         ${p.image ? `<img src="${fullUrl(p.image)}" alt="${esc(p.title)}">` : ""}
-        <h3>${esc(p.title)}</h3>
-        <p>${esc(p.description)}</p>
-        <p><strong>Tech:</strong> ${esc(p.stack)}</p>
-        <div class="project-buttons">
-          ${p.liveUrl ? `<a href="${esc(p.liveUrl)}" target="_blank" class="btn primary">Live Demo</a>` : ""}
-          ${p.githubUrl ? `<a href="${esc(p.githubUrl)}" target="_blank" class="btn secondary">GitHub</a>` : ""}
+        
+        <div class="project-card-content">
+          <h3>${esc(p.title)}</h3>
+
+          <p>${esc(p.description || "")}</p>
+
+          <p>
+            <strong>Tech:</strong> ${esc(p.stack || "")}
+          </p>
+
+          <div class="project-buttons">
+            ${p.liveUrl ? `
+              <a href="${esc(p.liveUrl)}" target="_blank" class="btn primary">
+                Live Demo
+              </a>
+            ` : ""}
+
+            ${p.githubUrl ? `
+              <a href="${esc(p.githubUrl)}" target="_blank" class="btn secondary">
+                GitHub
+              </a>
+            ` : ""}
+          </div>
         </div>
       </div>
-    `).join("");
+    `;
+
+    const fullMajorProjects = projects.filter(
+      p => p.category === "fullstack" && p.level === "major"
+    );
+
+    const fullMiniProjects = projects.filter(
+      p => p.category === "fullstack" && p.level === "mini"
+    );
+
+    const dataMajorProjects = projects.filter(
+      p => p.category === "dataanalytics" && p.level === "major"
+    );
+
+    const dataMiniProjects = projects.filter(
+      p => p.category === "dataanalytics" && p.level === "mini"
+    );
+
+    fullMajor.innerHTML = fullMajorProjects.map(createCard).join("");
+    fullMini.innerHTML = fullMiniProjects.map(createCard).join("");
+    dataMajor.innerHTML = dataMajorProjects.map(createCard).join("");
+    dataMini.innerHTML = dataMiniProjects.map(createCard).join("");
   }
 
   function renderCertificates(certificates) {

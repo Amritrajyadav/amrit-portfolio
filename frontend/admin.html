@@ -86,8 +86,19 @@
       <h2>Add / Edit Project</h2>
       <form id="projectForm" class="admin-form">
         <input type="hidden" id="projectId" />
+
         <input id="projectTitle" placeholder="Project Title" required />
         <input id="projectTech" placeholder="Tech Stack" />
+
+        <select id="projectCategory">
+          <option value="fullstack">Full Stack</option>
+          <option value="dataanalytics">Data Analytics</option>
+        </select>
+
+        <select id="projectLevel">
+          <option value="major">Major Project</option>
+          <option value="mini">Mini Project</option>
+        </select>
 
         <label>Project Image URL</label>
         <input id="projectImage" placeholder="Paste project image URL or upload below" />
