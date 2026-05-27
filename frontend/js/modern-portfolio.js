@@ -151,7 +151,7 @@ if (langToggle) {
                 heroTitle.textContent = "फुल स्टैक वेब डेवलपर";
                 heroPara.textContent = "मैं HTML, CSS, JavaScript, Node.js, Express.js और MySQL का उपयोग करके practical web applications बनाता हूं। मेरा मुख्य project EduPlatform LMS है।";
             } else {
-                heroTitle.textContent = "Full Stack Web Developer";
+                heroTitle.textContent = "Full Stack Developer | Data Analyst";
                 heroPara.textContent = "I build clean, practical and responsive web applications using HTML, CSS, JavaScript, Node.js, Express.js and MySQL. My strongest project is EduPlatform, a full stack LMS.";
             }
         }
@@ -323,7 +323,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const heroTitle = document.querySelector(".hero-text h2");
     const heroPara = document.querySelector(".hero-text p");
     const langToggle = document.getElementById("langToggle");
-    if (heroTitle) heroTitle.textContent = "Full Stack Web Developer";
+    if (heroTitle) heroTitle.textContent = "Full Stack Developer | Data Analyst";
     if (heroPara) heroPara.textContent = "I build clean, practical and responsive web applications using HTML, CSS, JavaScript, Node.js, Express.js and MySQL. My strongest project is EduPlatform, a full stack LMS.";
     if (langToggle) langToggle.textContent = "हिंदी";
 });

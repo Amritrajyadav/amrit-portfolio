@@ -61,7 +61,7 @@
     if (aboutInfo) {
       aboutInfo.innerHTML = `
         <div><strong>Name:</strong> ${esc(p.name || "Amrit Raj")}</div>
-        <div><strong>Role:</strong> ${esc(p.title || "Full Stack Web Developer")}</div>
+        <div><strong>Role:</strong> ${esc(p.title || "Full Stack Developer | Data Analyst")}</div>
         <div><strong>Email:</strong> ${esc(p.email || "amritrajyadav7@gmail.com")}</div>
         <div><strong>Phone:</strong> ${esc(p.phone || "")}</div>
         <div><strong>Location:</strong> ${esc(p.location || "India")}</div>
