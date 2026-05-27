@@ -361,6 +361,10 @@ async function deleteItem(type, id) {
 function resetProjectForm() {
   projectId.value = "";
   projectForm.reset();
+
+  projectImagePreview.src = "";
+  projectVideoPreview.src = "";
+  projectVideoPreview.style.display = "none";
 }
 
 function resetSkillForm() {
@@ -510,11 +514,17 @@ async function uploadVideo(fileInputId, targetInputId) {
 }
 
 function updateVideoPreview() {
-
   const input = document.getElementById("projectVideoUrl");
   const preview = document.getElementById("projectVideoPreview");
 
   if (!input || !preview) return;
 
-  preview.src = input.value || "";
+  if (!input.value) {
+    preview.src = "";
+    preview.style.display = "none";
+    return;
+  }
+
+  preview.src = input.value;
+  preview.style.display = "block";
 }

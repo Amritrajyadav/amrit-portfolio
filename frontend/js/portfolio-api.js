@@ -200,12 +200,17 @@
     dataMini.innerHTML = dataMiniProjects.map(createCard).join("");
   }
 
-  
+  const titleEl = document.getElementById("videoSectionTitle");
   function renderProjectVideoCards(projects) {
     const grid = document.getElementById("projectVideoGrid");
     if (!grid) return;
 
     const videoProjects = projects.filter(p => p.videoUrl);
+    const titleEl = document.getElementById("videoSectionTitle");
+
+    if (videoProjects.length && titleEl) {
+      titleEl.textContent = videoProjects[0].title + " - Video Demo";
+  }
 
     grid.innerHTML = videoProjects.map(p => `
       <div class="project-video-card reveal active">
