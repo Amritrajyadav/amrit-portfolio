@@ -1710,3 +1710,19 @@ body.theme-light .resume-actions a:first-child{
   object-fit: cover;
   display: block;
 }
+
+#video-demo .project-video-card{
+  max-width: 420px !important;
+  width: 100% !important;
+}
+
+#video-demo .project-video-card video{
+  width: 100% !important;
+  height: 260px !important;
+  object-fit: cover !important;
+  display: block !important;
+}
+
+#video-demo .project-video-content{
+  padding: 18px !important;
+}
