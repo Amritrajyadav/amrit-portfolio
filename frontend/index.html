@@ -430,23 +430,19 @@
         <h2 id="videoSectionTitle">Project Video Showcase</h2>
     </div>
 
-    <div class="project-video-card featured-video reveal active">
+    <div class="project-video-card reveal active">
 
         <video
             id="lmsDemoVideo"
-            class="project-demo-video"
+            src="videos/Project Video.mp4"
             autoplay
             muted
             loop
             controls
-            playsinline
-        >
-            <source src="videos/Project Video.mp4" type="video/mp4">
+            playsinline>
         </video>
 
         <div class="project-video-content">
-
-            <span class="video-badge">Featured LMS Demo</span>
 
             <h3>EduPlatform LMS</h3>
 
@@ -457,29 +453,17 @@
             </p>
 
             <div class="project-buttons">
-
-                <button
-                    class="btn secondary"
-                    type="button"
-                    onclick="toggleLmsMute()"
-                >
+                <button class="btn secondary" type="button" onclick="toggleLmsMute()">
                     Mute / Unmute
                 </button>
 
-                <button
-                    class="btn primary"
-                    type="button"
-                    onclick="openLmsFullscreen()"
-                >
+                <button class="btn primary" type="button" onclick="openLmsFullscreen()">
                     Full Screen
                 </button>
-
             </div>
 
         </div>
-
     </div>
-
 
     <div class="project-video-grid" id="projectVideoGrid"></div>
 </section>
