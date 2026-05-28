@@ -138,70 +138,99 @@
     `).join("");
   }
 
- function renderProjects(projects) {
-    if (!projects.length) return;
+ function renderProjects(projects = []) {
 
     const fullMajor = document.getElementById("fullstackMajorGrid");
     const fullMini = document.getElementById("fullstackMiniGrid");
     const dataMajor = document.getElementById("dataMajorGrid");
     const dataMini = document.getElementById("dataMiniGrid");
 
-    if (!fullMajor || !fullMini || !dataMajor || !dataMini) return;
+    if (!fullMajor || !fullMini || !dataMajor || !dataMini) {
+        return;
+    }
 
     const createCard = (p) => `
-      <div class="project-card reveal active">
-        ${p.image ? `<img src="${fullUrl(p.image)}" alt="${esc(p.title)}">` : ""}
-        
-        <div class="project-card-content">
-          <h3>${esc(p.title)}</h3>
+        <div class="project-card reveal active">
 
-          <p>${esc(p.description || "")}</p>
-
-          <p>
-            <strong>Tech:</strong> ${esc(p.stack || "")}
-          </p>
-
-          <div class="project-buttons">
-            ${p.liveUrl ? `
-              <a href="${esc(p.liveUrl)}" target="_blank" class="btn primary">
-                Live Demo
-              </a>
+            ${p.image ? `
+                <img src="${fullUrl(p.image)}" alt="${esc(p.title)}">
             ` : ""}
 
-            ${p.githubUrl ? `
-              <a href="${esc(p.githubUrl)}" target="_blank" class="btn secondary">
-                GitHub
-              </a>
-            ` : ""}
-          </div>
+            <div class="project-card-content">
+
+                <h3>${esc(p.title || "Untitled Project")}</h3>
+
+                <p>${esc(p.description || "")}</p>
+
+                <p>
+                    <strong>Tech:</strong>
+                    ${esc(p.stack || "")}
+                </p>
+
+                <div class="project-buttons">
+
+                    ${p.liveUrl ? `
+                        <a href="${esc(p.liveUrl)}"
+                           target="_blank"
+                           class="btn primary">
+                           Live Demo
+                        </a>
+                    ` : ""}
+
+                    ${p.githubUrl ? `
+                        <a href="${esc(p.githubUrl)}"
+                           target="_blank"
+                           class="btn secondary">
+                           GitHub
+                        </a>
+                    ` : ""}
+
+                </div>
+
+            </div>
+
         </div>
-      </div>
     `;
 
     const fullMajorProjects = projects.filter(
-      p => p.category === "fullstack" && p.level === "major"
+        p => (p.category || "").toLowerCase() === "fullstack"
+          && (p.level || "").toLowerCase() === "major"
     );
 
     const fullMiniProjects = projects.filter(
-      p => p.category === "fullstack" && p.level === "mini"
+        p => (p.category || "").toLowerCase() === "fullstack"
+          && (p.level || "").toLowerCase() === "mini"
     );
 
     const dataMajorProjects = projects.filter(
-      p => p.category === "dataanalytics" && p.level === "major"
+        p => (p.category || "").toLowerCase() === "dataanalytics"
+          && (p.level || "").toLowerCase() === "major"
     );
 
     const dataMiniProjects = projects.filter(
-      p => p.category === "dataanalytics" && p.level === "mini"
+        p => (p.category || "").toLowerCase() === "dataanalytics"
+          && (p.level || "").toLowerCase() === "mini"
     );
 
-    fullMajor.innerHTML = fullMajorProjects.map(createCard).join("");
-    fullMini.innerHTML = fullMiniProjects.map(createCard).join("");
-    dataMajor.innerHTML = dataMajorProjects.map(createCard).join("");
-    dataMini.innerHTML = dataMiniProjects.map(createCard).join("");
-  }
+    fullMajor.innerHTML = fullMajorProjects.length
+        ? fullMajorProjects.map(createCard).join("")
+        : "<p>No major full stack projects yet.</p>";
+
+    fullMini.innerHTML = fullMiniProjects.length
+        ? fullMiniProjects.map(createCard).join("")
+        : "<p>No mini full stack projects yet.</p>";
+
+    dataMajor.innerHTML = dataMajorProjects.length
+        ? dataMajorProjects.map(createCard).join("")
+        : "<p>No major data analytics projects yet.</p>";
+
+    dataMini.innerHTML = dataMiniProjects.length
+        ? dataMiniProjects.map(createCard).join("")
+        : "<p>No mini data analytics projects yet.</p>";
+}
 
   
-  function renderProjectVideoCards(projects) {
+  function renderProjectVideoCards(projects = []) {
 
     const grid = document.getElementById("projectVideoGrid");
 
