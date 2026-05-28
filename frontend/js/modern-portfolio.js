@@ -38,14 +38,6 @@ function scrollToTop() {
     window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-function sendMessage(event) {
-    event.preventDefault();
-    const msg = document.getElementById("formMessage");
-    if (msg) {
-        msg.textContent = "Thanks! Contact form UI is ready. Connect EmailJS/Formspree for real messages.";
-        msg.style.color = "#86efac";
-    }
-}
 
 document.addEventListener("DOMContentLoaded", () => {
     const backToTop = document.getElementById("backToTop");
@@ -417,48 +409,4 @@ function openDynamicFullscreen(button) {
   const video = card?.querySelector("video");
   if (!video) return;
   video.requestFullscreen?.();
-}
-
-.project-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-  gap:28px;
-}
-
-.project-card{
-  background:rgba(15,23,42,.82);
-  border:1px solid rgba(148,163,184,.18);
-  border-radius:28px;
-  overflow:hidden;
-  max-width:520px;
-  box-shadow:0 25px 80px rgba(0,0,0,.28);
-}
-
-.project-card img{
-  width:100%;
-  height:260px;
-  object-fit:cover;
-  display:block;
-}
-
-.project-card-content{
-  padding:26px;
-}
-
-.project-card-content h3{
-  font-size:28px;
-  margin-bottom:14px;
-}
-
-.project-card-content p{
-  color:#cbd5e1;
-  line-height:1.7;
-  font-size:16px;
-}
-
-.project-card-content .project-buttons{
-  margin-top:22px;
-  display:flex;
-  gap:14px;
-  flex-wrap:wrap;
 }
